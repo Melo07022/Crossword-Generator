@@ -29,7 +29,7 @@ class MorePageHome extends StatelessWidget {
           ),
 
 
-          Expanded(
+          Container(
             child: ClipRRect(
               child: Container(
                 color: Colors.white,

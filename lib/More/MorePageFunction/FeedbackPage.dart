@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
@@ -64,10 +65,10 @@ class _FeedbackPState extends State<FeedbackP> {
             Text(title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
             const SizedBox(height: 8),
             TextField(controller: controller,
-              maxLines: maxLines,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-              )
+                maxLines: maxLines,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                )
             ),
 
 

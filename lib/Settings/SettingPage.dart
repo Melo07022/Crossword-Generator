@@ -23,7 +23,7 @@ class SettingsApp extends StatelessWidget {
               child: ClipRRect(
                 child: Container(
                   color: Colors.white,
-                  
+
                   child: Column(
 
                     children: [

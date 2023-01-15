@@ -1,9 +1,15 @@
+
+
+
 import 'package:cros_gen/AddQuestions/AddQuestionPage.dart';
 import 'package:cros_gen/DifficultyLevel/LevelDifficulty.dart';
 import 'package:cros_gen/More/MorePage.dart';
 import 'package:cros_gen/Settings/SettingPage.dart';
+import 'package:cros_gen/UserProfile/UserProfilePage.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 
 
 class HomePageScreen extends StatefulWidget {
@@ -15,7 +21,11 @@ class HomePageScreen extends StatefulWidget {
 
 class _HomePageScreenState extends State<HomePageScreen> {
   @override
+
+
+
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Color(0xFF1A237E),
 
@@ -142,7 +152,9 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                       borderRadius: BorderRadius.all(Radius.circular(20.0)),
                                       color: Colors.deepPurple,
                                       child: InkWell(
-                                        onTap: () {},
+                                        onTap: () {
+                                          Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileUser()));
+                                        },
                                         child: Column(
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: [
@@ -249,3 +261,5 @@ class _HomePageScreenState extends State<HomePageScreen> {
     );
   }
 }
+
+
