@@ -43,7 +43,10 @@ dependencies:
   http: ^0.13.5
   flutter_email_sender: ^5.2.0
   email_validator: ^2.1.17
-  day_night_switcher: ^0.2.0+1
+  sqflite: ^2.2.4+1
+
+
+
 
 
 dev_dependencies:

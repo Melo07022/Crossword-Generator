@@ -1,6 +1,4 @@
 import 'dart:convert';
-
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
@@ -49,6 +47,7 @@ class _FeedbackPState extends State<FeedbackP> {
     );
 
     print(response.body);
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Wysłano Pomyślnie! :D", style: TextStyle(color: Colors.green),)));
   }
 
   @override
@@ -118,6 +117,19 @@ class _FeedbackPState extends State<FeedbackP> {
                         ),
                         child: Text('Wyślij'),
                         onPressed: () {
+                          if (controllerName.text.isEmpty ||
+                          controllerFrom.text.isEmpty ||
+                          controllerMessage.text.isEmpty ||
+                          controllerSubject.text.isEmpty) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text("Wypełnij wszystkie pola!")
+
+                              ),
+
+                            );
+                          return;
+                          }
+
                           sendEmail();
                         },
                       ),
@@ -134,3 +146,4 @@ class _FeedbackPState extends State<FeedbackP> {
     );
   }
 }
+

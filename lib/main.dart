@@ -4,28 +4,32 @@ import 'package:flutter/services.dart';
 
 
 
-void main() {
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-  runApp(const MyApp());
-
+  runApp(MyApp());
 }
 
 
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
 
+
+class MyApp extends StatelessWidget {
 
 
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
+
       title: "Generator Krzyżówek",
+
       home: HomePageScreen(),
 
     );
