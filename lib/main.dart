@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:sqflite/sqflite.dart';
 import 'HomePage/Home.dart';
 import 'package:flutter/services.dart';
-
+import 'package:path/path.dart';
+import 'Database/DatabaseManager.dart';
 
 
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await DatabaseManager.InitializeDatabase();
+  var questions = await DatabaseManager.getAllQuestions(DatabaseManager.database);
+  for(int i = 0; i<questions.length; i++){
+    print(questions[i]);
+  }
 
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,

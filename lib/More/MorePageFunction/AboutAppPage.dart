@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+
 class AboutApp extends StatelessWidget {
   const AboutApp({Key? key}) : super(key: key);
 
@@ -34,9 +35,9 @@ class AboutApp extends StatelessWidget {
                       Text("O Aplikacji", style: GoogleFonts.ubuntu(textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 35)),),
                       SizedBox(height: 20,),
                       Text("Generator krzyżówek ma za zadanie umilić spędzanie wolnego czasu poprzez rozwiązywanie krzyżówek, a także zaczerpnąc nowej "
-                          "wiedzy na różne tematy.\n\nAplikacja jest dla każdego kto lubi rozwiązywać krzyżówki.", style: TextStyle(fontSize: 16),),
+                          "wiedzy na różne tematy.\n\nAplikacja jest dla każdego kto lubi rozwiązywać krzyżówki.", style: TextStyle(fontSize: 16), textAlign: TextAlign.center,),
                       SizedBox(height: 20,),
-                      Text("Wersja", style: GoogleFonts.ubuntu(textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 35)),),
+                      Text("Wersja", style: GoogleFonts.ubuntu(textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 35)), textAlign: TextAlign.center),
                       SizedBox(height: 20,),
                       Text("1.0", style: TextStyle(fontSize: 20),),
 
