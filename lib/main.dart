@@ -14,6 +14,11 @@ void main() async {
   for(int i = 0; i<questions.length; i++){
     print(questions[i]);
   }
+  print("-------------------------------");
+  var questions2 = await DatabaseManager.getQuestions(DatabaseManager.database, 2,5);
+  for(int i = 0; i<questions2.length; i++){
+    print(questions2[i]);
+  }
 
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,

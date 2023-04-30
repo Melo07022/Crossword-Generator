@@ -10,6 +10,8 @@ import 'package:cros_gen/UserProfile/UserProfilePage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../Crossword/Crossword.dart';
+
 
 
 class HomePageScreen extends StatefulWidget {
@@ -82,7 +84,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                   color: Colors.deepPurple,
                                   child: InkWell(
                                     onTap: () {
-                                      Navigator.push(context, MaterialPageRoute(builder: (context) => GameLevel()));
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => CrosswordGame()));
                                     },
                                     child: Column(
                                       children: [
