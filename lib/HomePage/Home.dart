@@ -84,7 +84,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                   color: Colors.deepPurple,
                                   child: InkWell(
                                     onTap: () {
-                                      Navigator.push(context, MaterialPageRoute(builder: (context) => CrosswordGame()));
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => GameLevel()));
                                     },
                                     child: Column(
                                       children: [
