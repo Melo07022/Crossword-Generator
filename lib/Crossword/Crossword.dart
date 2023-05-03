@@ -4,6 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../Database/Questions.dart';
+import '../Ending/Lose.dart';
+import '../Ending/Win.dart';
 
 
 class CrosswordGame extends StatefulWidget {
@@ -19,17 +21,18 @@ class _CrosswordGameState extends State<CrosswordGame> {
   bool _showQuestions = false;
   int Difficulty;
   List<Question>? _questions;
+  List<List<bool>> _answers;
   
-  _CrosswordGameState(int difficulty) : Difficulty = difficulty{
+  _CrosswordGameState(int difficulty) : Difficulty = difficulty, _answers = []{
     DatabaseManager.getQuestions(DatabaseManager.database, Difficulty, 5).then((value) =>  setState(() {
-      _questions = value; }));
+      _questions = value;
+      _answers = List.generate(_questions!.length, (i) => List.generate(_questions![i].answer.length, (j)=> false, growable: false), growable: false);
+    }));
   }
 
   @override
   Widget build(BuildContext context) {
     var questions = _questions?.asMap().entries.map((e) => Text((e.key +1).toString() + ". " + e.value.question)).toList() ??[];
-
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: _showCrossword
@@ -37,7 +40,6 @@ class _CrosswordGameState extends State<CrosswordGame> {
         builder: (BuildContext context, BoxConstraints constraints) {
           final crosswordsCount = (constraints.maxWidth / 40).floor();
           final crosswordsWidth = constraints.maxWidth / crosswordsCount;
-
           return Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -58,6 +60,7 @@ class _CrosswordGameState extends State<CrosswordGame> {
                       ),
                       child: TextField(
                         onChanged: (value){
+                          _answers [question.key][index] = value == question.value.answer[index];
                           if (value == question.value.answer[index]){
                             print("Trafiłeś literke");
                           }
@@ -74,8 +77,20 @@ class _CrosswordGameState extends State<CrosswordGame> {
                     ),
                   )],
                 )) ??[]),
-
-
+                SizedBox(height: 16),
+                ElevatedButton(
+                  child: Text("Zakończ"),
+                  onPressed: () {
+                    if(_answers.every((element) => element.every((element2) => element2)))
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => WinPage()));
+                    else {
+                      int score = _answers.expand((e) => e.map((e) => e == true ? 1:0)).reduce((value, element) => value + element); // to samo ale zamienia wszystkie true na 1 i je sumuje
+                      int maxScore = _answers.expand((element) => element.map((e) => 1)).reduce((value, element) => value + element); //lista list, expand robi liste, rozrzuca na kazdym elemence, robi pojedyncza liste w zagniezdzonej listach, elementy wewnatrz przechodzi zewnetrzenej listy, zamienia elemeny na 1 i sumuje.
+                      Navigator.push(context, MaterialPageRoute(builder: (
+                          context) => LosePage(score, maxScore)));
+                    };
+                  },
+                ),
                 SizedBox(height: 16),
                 ElevatedButton(
                   onPressed: () {
@@ -93,6 +108,7 @@ class _CrosswordGameState extends State<CrosswordGame> {
                 )
                     : SizedBox.shrink(),
               ],
+
             ),
           );
         },
@@ -101,7 +117,6 @@ class _CrosswordGameState extends State<CrosswordGame> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-
 
           ],
         ),

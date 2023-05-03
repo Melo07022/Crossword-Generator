@@ -1,3 +1,4 @@
+import 'package:cros_gen/AddQA/AddQ_A.dart';
 import 'package:cros_gen/More/MorePageFunction/AboutAppPage.dart';
 import 'package:cros_gen/More/MorePageFunction/FaqPage.dart';
 import 'package:cros_gen/More/MorePageFunction/FeedbackPage.dart';
@@ -22,13 +23,10 @@ class MorePageHome extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-
               Text("Więcej opcji!", style: GoogleFonts.ubuntu(textStyle:  TextStyle(fontSize: 30, color: Colors.white, fontWeight: FontWeight.bold),),),
               Image.asset("images/moreicon.png", width: 120, height: 120,)
             ],
           ),
-
-
           Container(
             child: ClipRRect(
               child: Container(
@@ -121,6 +119,14 @@ class MorePageHome extends StatelessWidget {
                     ),
                     Divider(
                       thickness: 1.4,
+                    ),
+                    ListTile(
+                      leading: Image.asset('images/about-us.png', width: 50, height: 50,),
+                      title: Text('Dodaj Wpis', style: GoogleFonts.ubuntu(textStyle: TextStyle(fontSize: 20)),),
+                      trailing: Image.asset('images/arrow.png', width: 40, height: 40,),
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => AddQuestionsPage()));
+                      },
                     ),
 
                   ],

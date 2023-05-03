@@ -8,6 +8,7 @@ import 'Database/DatabaseManager.dart';
 
 
 void main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
   await DatabaseManager.InitializeDatabase();
   var questions = await DatabaseManager.getAllQuestions(DatabaseManager.database);
@@ -39,11 +40,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return MaterialApp(
-
+      debugShowCheckedModeBanner: false,
       title: "Generator Krzyżówek",
-
       home: HomePageScreen(),
-
     );
 
 
